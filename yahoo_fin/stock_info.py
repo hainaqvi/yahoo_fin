@@ -680,7 +680,8 @@ def _raw_get_daily_info(site):
     
     df.columns = tables[0].columns
     
-    del df["52 Week Range"]
+    if "52 Week Range" in df.columns:
+        del df["52 Week Range"]
     
     df["% Change"] = df["% Change"].map(lambda x: float(x.strip("%+").replace(",", "")))
      
